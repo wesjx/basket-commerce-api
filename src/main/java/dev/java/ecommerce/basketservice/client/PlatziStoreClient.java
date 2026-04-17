@@ -1,6 +1,7 @@
 package dev.java.ecommerce.basketservice.client;
 
 import dev.java.ecommerce.basketservice.client.response.PlatziProductResponse;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 @FeignClient(name = "PlatziStoreClient", url = "${basket.client.platzi}")
+@EnableCaching
 public interface PlatziStoreClient {
     @GetMapping("/products")
     List<PlatziProductResponse> getAllProducts();
